@@ -1,10 +1,9 @@
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
+import { createClient } from "@supabase/supabase-js";
 
 export default async function Index() {
-  const supabase = createServerComponentClient({ cookies });
-
-
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const supabase = createClient(!!url ? url : "", !!key ? key : "");
 
   // fetch about me info
   let { data: about } = await supabase.from("about").select().limit(1).single();
