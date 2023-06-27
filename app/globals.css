@@ -25,3 +25,96 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.main-container {
+  display: flex;
+  justify-content: center;
+}
+
+.bumper {
+  flex: 1 0 13%
+}
+
+.resume {
+  margin:4em 4em 4em 4em;
+  flex: auto auto 74%;
+  text-align: justify;
+
+}
+
+.resume h1 {
+  font-size: xx-large;
+  margin-bottom: 0.2em;
+}
+
+.resume h2 {
+  font-size: x-large;
+  font-weight: bolder;
+  margin-bottom: 0.2em;
+}
+
+.resume ul:first-of-type {
+  margin-bottom: 1.5em;
+}
+
+.resume ul ul {
+  list-style-type: circle;
+  margin-left: 1em;
+}
+
+.header {
+  text-align: center;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: space-around;
+}
+
+.contact-info li {
+  padding: 0.5em;
+  font-size: small;
+}
+
+.about-me {
+  margin-bottom: 1em;
+}
+
+.experience {
+  display: flex;
+  flex-direction: column;
+}
+
+.company-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.company-name {
+  width: auto;
+  font-size: large;
+  font-weight: bold;
+}
+
+.location {
+  font-size: smaller;
+  display: flex;
+  align-items: flex-end;
+}
+
+.job-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1em;
+  font-style: oblique;
+}
+
+.date-range {
+  font-size: smaller;
+}
+
+.bullet-point:not(:last-child) {
+  margin-bottom: 0.5em;
+}
