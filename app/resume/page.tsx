@@ -15,7 +15,7 @@ export default async function Resume() {
 
   // fetch experience info and separate it by type: professional and education
   const { data: experience } = await supabase.from("experience").select();
-  const professionalExperience = experience?.filter((exp) => exp.exp_type === "professional");
+  const professionalExperience = experience?.filter((exp) => exp.exp_type === "professional").sort((a, b) => {return b.end_year - a.end_year});
   const education = experience?.filter((exp) => exp.exp_type === "education");
 
   // fetch skill info
