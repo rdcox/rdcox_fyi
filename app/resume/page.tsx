@@ -47,7 +47,7 @@ export default async function Resume() {
       </div>
       
       <h2>Professional Experience</h2>
-      <ul>
+      <ul data-test-id="professional-experience">
         {professionalExperience?.map((exp: any) => (
           <ExperienceItem exp={exp}></ExperienceItem>
         ))}
