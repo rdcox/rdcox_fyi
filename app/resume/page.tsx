@@ -3,7 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import { ExperienceItem } from "@/components/ExperienceItem";
 
 export default async function Resume() {
-    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   const supabase = createClient(!!url ? url : "", !!key ? key : "");
 
@@ -14,8 +14,13 @@ export default async function Resume() {
   let { data: contact } = await supabase.from("contact").select();
 
   // fetch experience info and separate it by type: professional and education
+  // sort professional experience by 
   const { data: experience } = await supabase.from("experience").select();
-  const professionalExperience = experience?.filter((exp) => exp.exp_type === "professional").sort((a, b) => {return b.end_year - a.end_year});
+  const professionalExperience = experience?.
+                                  filter((exp) => exp.exp_type === "professional").
+                                  sort((a, b) => {
+                                    return b.end_year - a.end_year
+                                  });
   const education = experience?.filter((exp) => exp.exp_type === "education");
 
   // fetch skill info
