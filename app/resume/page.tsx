@@ -1,21 +1,32 @@
-import { createClient } from "@supabase/supabase-js";
-
 import { ExperienceItem } from "@/components/ExperienceItem";
+import { supabase } from "@/lib/supabase";
+
+async function getAboutMe() {
+  let { data: about } = await supabase.from("about").select().limit(1).single();
+  return about;
+}
+
+async function getContactInfo() {
+  let { data: contact } = await supabase.from("contact").select();
+  return contact;
+}
+
+async function getExperiences() {
+  const { data: experience } = await supabase.from("experience").select();
+  return experience;
+}
+
+async function getSkills() {
+  const { data: skills } = await supabase.from("skills").select();
+  return skills;
+}
 
 export default async function Resume() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  const supabase = createClient(!!url ? url : "", !!key ? key : "");
-
-  // fetch about me info
-  let { data: about } = await supabase.from("about").select().limit(1).single();
-
-  // fetch contact info
-  let { data: contact } = await supabase.from("contact").select();
-
-  // fetch experience info and separate it by type: professional and education
-  // sort professional experience by 
-  const { data: experience } = await supabase.from("experience").select();
+  const aboutMeProm = getAboutMe();
+  const contactProm = getContactInfo();
+  const experienceProm = getExperiences();
+  const skillsProm = getSkills();
+  const [about, contact, experience, skills] = await Promise.all([aboutMeProm, contactProm, experienceProm, skillsProm]);
 
   const professionalExperience = experience?.
   filter((exp) => exp.exp_type === "professional").
@@ -24,9 +35,6 @@ export default async function Resume() {
   });
   const education = experience?.filter((exp) => exp.exp_type === "education");
 
-  // fetch skill info
-  const { data: skills } = await supabase.from("skills").select();
-  
   return (
     <div className="main-container">
     <div className="bumper"></div>
