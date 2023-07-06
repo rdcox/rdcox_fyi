@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default async function Index() {
   return (
     <div className="grid grid-cols-6 grid-rows-5 gap-8">
@@ -27,7 +29,11 @@ export default async function Index() {
         </p>
       </div>
       <div className="col-span-2 row-span-4">
-        <img className="object-contain" src="https://avatars.githubusercontent.com/u/67571680?v=4"></img>
+        <Image 
+          src="/me_and_t.jpg" 
+          alt="A photo of me (left) at the Perlan Museum in Reykjavik, Iceland"
+          height={500}
+          width={500}></Image>
       </div>
       <div></div>
     </div>
