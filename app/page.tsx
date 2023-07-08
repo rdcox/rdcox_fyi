@@ -4,7 +4,7 @@ export default async function Index() {
   return (
     <div className="grid grid-cols-6 grid-rows-5 gap-8">
       <div></div>
-      <div className="col-span-4 text-center mt-3.5 mb-3.5 text-5xl">
+      <div className="col-span-4 text-5xl place-self-center">
         <h1>Welcome!</h1>
       </div>
       <div></div>
