@@ -1,8 +1,15 @@
+import About from "@/models/about";
 import { supabase } from "./supabase";
 
-export async function getAboutMe() {
+export async function getAboutMe(): Promise<About> {
     let { data: about } = await supabase.from("about").select().limit(1).single();
-    return about;
+    return {
+        id: about.id,
+        name: about.name,
+        tag: about.tag,
+        subTag: about.sub_tag,
+        aboutMe: about.about_me,
+    };
 }
   
 export async function getContactInfo() {
@@ -26,6 +33,6 @@ export async function getResumeData() {
     const experienceProm = getExperiences();
     const skillsProm = getSkills();
     const [about, contact, experience, skills] = await Promise.all([aboutMeProm, contactProm, experienceProm, skillsProm]);
-    
+
     return { about, contact, experience, skills };
 }

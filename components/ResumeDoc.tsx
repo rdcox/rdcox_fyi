@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
       
       <div className="header">
         <h1>{about.name}</h1>
-        <p>{about.tag} | {about.sub_tag}</p>
+        <p>{about.tag} | {about.subTag}</p>
         <ul className="contact-info">
           {contact?.map((inf: any) => (
             <li>{String(inf.value).includes("http") ? <a href={inf.value} target="_blank">{inf.name}</a> : inf.value}</li>
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
 
       <div className="about-me">
         <h2>About Me</h2>
-        <p>{about.about_me}</p>
+        <p>{about.aboutMe}</p>
       </div>
       
       <h2>Professional Experience</h2>
