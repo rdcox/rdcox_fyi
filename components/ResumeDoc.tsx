@@ -1,5 +1,4 @@
 import { Page, View, Document, StyleSheet, pdf } from '@react-pdf/renderer';
-import { ExperienceItem } from './ExperienceItem';
 import { getResumeData } from '@/lib/resume-data';
 
 const styles = StyleSheet.create({
@@ -55,13 +54,6 @@ const styles = StyleSheet.create({
   export default async function ResumeDoc() {
     const { about, contact, experience, skills } = await getResumeData();
 
-    const professionalExperience = experience?.
-                                    filter((exp) => exp.exp_type === "professional").
-                                    sort((a, b) => {
-                                        return b.end_year - a.end_year
-                                    });
-    const education = experience?.filter((exp) => exp.exp_type === "education");
-
     return (
         <Document>
             <Page size="A4" style={styles.resume}>
@@ -82,20 +74,6 @@ const styles = StyleSheet.create({
         <h2>About Me</h2>
         <p>{about.aboutMe}</p>
       </div>
-      
-      <h2>Professional Experience</h2>
-      <ul data-test-id="professional-experience">
-        {professionalExperience?.map((exp: any) => (
-          <ExperienceItem exp={exp}></ExperienceItem>
-        ))}
-      </ul>
-      
-      <h2>Education</h2>
-      <ul>
-        {education?.map((exp: any) => (
-          <ExperienceItem exp={exp}></ExperienceItem>
-        ))}
-      </ul>
       
       <h2>Skills</h2>
       <ul>
