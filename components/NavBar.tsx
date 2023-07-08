@@ -5,7 +5,7 @@ export default function NavBar() {
             <a href="/" className="text-2xl no-underline text-grey-darkest hover:text-blue-dark">rdcox</a>
         </div>
         <div>
-            <a href="/resume" className="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Resume</a>
+            <a href="/resume" className="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">resume</a>
         </div>
     </nav>
     )
