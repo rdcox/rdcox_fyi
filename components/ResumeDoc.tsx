@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   });
 
   export default async function ResumeDoc() {
-    const { about, contact, experience, skills } = await getResumeData();
+    const { about, contact, professionalExperience, education, skills } = await getResumeData();
 
     return (
         <Document>

@@ -38,5 +38,12 @@ export async function getResumeData() {
     const skillsProm = getSkills();
     const [about, contact, experience, skills] = await Promise.all([aboutMeProm, contactProm, experienceProm, skillsProm]);
 
-    return { about, contact, experience, skills };
+    const professionalExperience = experience?.
+    filter((exp) => exp.exp_type === "professional").
+    sort((a, b) => {
+      return b.end_year - a.end_year
+    });
+    const education = experience?.filter((exp) => exp.exp_type === "education");
+
+    return { about, contact, professionalExperience, education, skills };
 }

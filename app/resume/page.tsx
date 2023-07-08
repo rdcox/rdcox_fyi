@@ -2,14 +2,7 @@ import { ExperienceItem } from "@/components/ExperienceItem";
 import { getResumeData } from "@/lib/resume-data";
 
 export default async function Resume() {
-  const { about, contact, experience, skills } = await getResumeData();
-
-  const professionalExperience = experience?.
-  filter((exp) => exp.exp_type === "professional").
-  sort((a, b) => {
-    return b.end_year - a.end_year
-  });
-  const education = experience?.filter((exp) => exp.exp_type === "education");
+  const { about, contact, professionalExperience, education, skills } = await getResumeData();
 
   return (
     <div className="main-container">
