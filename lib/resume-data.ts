@@ -2,6 +2,7 @@ import About from "@/models/about";
 import { supabase } from "./supabase";
 import Contact from "@/models/contact";
 import Experience from "@/models/experience";
+import Skill from "@/models/skill";
 
 export async function getAboutMe(): Promise<About> {
     let { data: about } = await supabase.from("about").select().limit(1).single();
@@ -25,9 +26,9 @@ export async function getExperiences(): Promise<Experience[]> {
     return <Array<Experience>>experience;
 }
   
-export async function getSkills() {
+export async function getSkills(): Promise<Skill[]> {
     const { data: skills } = await supabase.from("skills").select();
-    return skills;
+    return <Array<Skill>>skills;
 }
 
 export async function getResumeData() {
