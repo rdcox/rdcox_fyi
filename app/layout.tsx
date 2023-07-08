@@ -1,6 +1,5 @@
 import NavBar from '@/components/NavBar'
 import './globals.css'
-import Link from 'next/link'
 
 export const metadata = {
   title: 'rdcox.fyi',
