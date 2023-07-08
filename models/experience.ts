@@ -5,7 +5,7 @@ export default interface Experience {
     city: string,
     state: string,
     country: string,
-    startM_mnth: string,
+    start_month: string,
     start_year: number,
     end_month: string,
     end_year: number,

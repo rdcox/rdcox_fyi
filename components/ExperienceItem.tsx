@@ -1,5 +1,7 @@
+import Experience from "@/models/experience";
+
 export type ExperienceItemProps = {
-    exp: any;
+    exp: Experience;
 }
 
 export function ExperienceItem({ exp }: ExperienceItemProps) {
