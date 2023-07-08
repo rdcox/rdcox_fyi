@@ -33,7 +33,8 @@ export default async function Index() {
           src="/me_and_t.jpg" 
           alt="A photo of me (left) at the Perlan Museum in Reykjavik, Iceland"
           height={500}
-          width={500}></Image>
+          width={500}
+          className='object-fill'></Image>
       </div>
       <div></div>
     </div>
