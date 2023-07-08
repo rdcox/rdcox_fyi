@@ -1,32 +1,8 @@
 import { ExperienceItem } from "@/components/ExperienceItem";
-import { supabase } from "@/lib/supabase";
-
-async function getAboutMe() {
-  let { data: about } = await supabase.from("about").select().limit(1).single();
-  return about;
-}
-
-async function getContactInfo() {
-  let { data: contact } = await supabase.from("contact").select();
-  return contact;
-}
-
-async function getExperiences() {
-  const { data: experience } = await supabase.from("experience").select();
-  return experience;
-}
-
-async function getSkills() {
-  const { data: skills } = await supabase.from("skills").select();
-  return skills;
-}
+import { getResumeData } from "@/lib/resume-data";
 
 export default async function Resume() {
-  const aboutMeProm = getAboutMe();
-  const contactProm = getContactInfo();
-  const experienceProm = getExperiences();
-  const skillsProm = getSkills();
-  const [about, contact, experience, skills] = await Promise.all([aboutMeProm, contactProm, experienceProm, skillsProm]);
+  const { about, contact, experience, skills } = await getResumeData();
 
   const professionalExperience = experience?.
   filter((exp) => exp.exp_type === "professional").
